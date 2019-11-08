@@ -26,13 +26,13 @@
             android:icon="@drawable/help"
             android:title="Preguntas Frecuentes" />
     </group>
-        <menu>
+
             <item
                 android:id="@+id/nav_share"
                   android:title="Configuracion" />
             <item
                 android:id="@+id/nav_send"
                 android:title="Calificanos" />
-        </menu>
+
 
 </menu>
