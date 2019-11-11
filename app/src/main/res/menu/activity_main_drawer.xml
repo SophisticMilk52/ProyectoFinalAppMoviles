@@ -10,29 +10,32 @@
             android:icon="@drawable/home"
             android:title="Inicio" />
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/nav_categorias"
             android:icon="@drawable/grid"
             android:title="Categorias" />
         <item
-            android:id="@+id/nav_slideshow"
+            android:id="@+id/nav_cuenta"
             android:icon="@drawable/user"
             android:title="Cuenta" />
         <item
-            android:id="@+id/nav_tools"
+            android:id="@+id/nav_vender"
             android:icon="@drawable/cash"
             android:title="Vender" />
         <item
-            android:id="@+id/help"
+            android:id="@+id/nav_preguntas"
             android:icon="@drawable/help"
             android:title="Preguntas Frecuentes" />
+        <item
+            android:id="@+id/nav_configuracion"
+            android:title="Configuracion"
+            android:icon="@drawable/ic_build_black_24dp"/>
+        <item
+            android:id="@+id/nav_calificanos"
+            android:title="Calificanos"
+            android:icon="@drawable/ic_check_black_24dp"/>
     </group>
 
-            <item
-                android:id="@+id/nav_share"
-                  android:title="Configuracion" />
-            <item
-                android:id="@+id/nav_send"
-                android:title="Calificanos" />
+
 
 
 </menu>

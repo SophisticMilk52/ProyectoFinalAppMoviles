@@ -1,17 +1,17 @@
-package com.example.proyectofinalappmoviles.ui.home;
+package com.example.proyectofinalappmoviles.ui.categorias;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class HomeViewModel extends ViewModel {
+public class CategoriasViewModel extends ViewModel {
 
     //private MutableLiveData<String> mText;
 
-    public HomeViewModel() {
+    public CategoriasViewModel() {
         /*
         mText = new MutableLiveData<>();
-        mText.setValue("This is home fragment");
+        mText.setValue("Categoria fragment");
 
          */
     }

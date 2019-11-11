@@ -1,4 +1,4 @@
-package com.example.proyectofinalappmoviles.ui.send;
+package com.example.proyectofinalappmoviles.ui.cuenta;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,22 +14,25 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.proyectofinalappmoviles.R;
 
-public class SendFragment extends Fragment {
+public class CuentaFragment extends Fragment {
 
-    private SendViewModel sendViewModel;
+    private CuentaViewModel cuentaViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        sendViewModel =
-                ViewModelProviders.of(this).get(SendViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_send, container, false);
-        final TextView textView = root.findViewById(R.id.text_send);
-        sendViewModel.getText().observe(this, new Observer<String>() {
+        cuentaViewModel =
+                ViewModelProviders.of(this).get(CuentaViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_cuenta, container, false);
+        /*
+        final TextView textView = root.findViewById(R.id.text_slideshow);
+        cuentaViewModel.getText().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);
             }
         });
+
+         */
         return root;
     }
 }

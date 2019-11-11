@@ -12,32 +12,38 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.example.proyectofinalappmoviles.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        android:id="@+id/nav_categorias"
+        android:name="com.example.proyectofinalappmoviles.ui.categorias.CategoriasFragment"
+        android:label="@string/menu_categorias"
+        tools:layout="@layout/fragment_categorias" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.example.proyectofinalappmoviles.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/nav_cuenta"
+        android:name="com.example.proyectofinalappmoviles.ui.cuenta.CuentaFragment"
+        android:label="@string/menu_cuenta"
+        tools:layout="@layout/fragment_cuenta" />
 
     <fragment
-        android:id="@+id/nav_tools"
-        android:name="com.example.proyectofinalappmoviles.ui.tools.ToolsFragment"
-        android:label="@string/menu_tools"
-        tools:layout="@layout/fragment_tools" />
+        android:id="@+id/nav_vender"
+        android:name="com.example.proyectofinalappmoviles.ui.vender.VenderFragment"
+        android:label="@string/menu_vender"
+        tools:layout="@layout/fragment_vender" />
 
     <fragment
-        android:id="@+id/nav_share"
-        android:name="com.example.proyectofinalappmoviles.ui.share.ShareFragment"
-        android:label="@string/menu_share"
-        tools:layout="@layout/fragment_share" />
+        android:id="@+id/nav_preguntas"
+        android:name="com.example.proyectofinalappmoviles.ui.preguntas.PreguntasFragment"
+        android:label="@string/menu_preguntas"
+        tools:layout="@layout/fragment_preguntas" />
 
     <fragment
-        android:id="@+id/nav_send"
-        android:name="com.example.proyectofinalappmoviles.ui.send.SendFragment"
-        android:label="@string/menu_send"
-        tools:layout="@layout/fragment_send" />
+        android:id="@+id/nav_configuracion"
+        android:name="com.example.proyectofinalappmoviles.ui.configuracion.ConfiguracionFragment"
+        android:label="@string/menu_configuracion"
+        tools:layout="@layout/fragment_configuracion" />
+
+    <fragment
+        android:id="@+id/nav_calificanos"
+        android:name="com.example.proyectofinalappmoviles.ui.calificanos.CalificanosFragment"
+        android:label="@string/menu_calificanos"
+        tools:layout="@layout/fragment_calificanos" />
 </navigation>

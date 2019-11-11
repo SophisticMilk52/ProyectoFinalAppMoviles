@@ -1,4 +1,4 @@
-package com.example.proyectofinalappmoviles.ui.share;
+package com.example.proyectofinalappmoviles.ui.vender;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,22 +14,25 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.proyectofinalappmoviles.R;
 
-public class ShareFragment extends Fragment {
+public class VenderFragment extends Fragment {
 
-    private ShareViewModel shareViewModel;
+    private VenderViewModel venderViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        shareViewModel =
-                ViewModelProviders.of(this).get(ShareViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_share, container, false);
-        final TextView textView = root.findViewById(R.id.text_share);
-        shareViewModel.getText().observe(this, new Observer<String>() {
+        venderViewModel =
+                ViewModelProviders.of(this).get(VenderViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_vender, container, false);
+        /*
+        final TextView textView = root.findViewById(R.id.text_tools);
+        venderViewModel.getText().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);
             }
         });
+
+         */
         return root;
     }
 }

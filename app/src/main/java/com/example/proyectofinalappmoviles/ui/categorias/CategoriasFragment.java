@@ -1,4 +1,4 @@
-package com.example.proyectofinalappmoviles.ui.tools;
+package com.example.proyectofinalappmoviles.ui.categorias;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,22 +14,25 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.proyectofinalappmoviles.R;
 
-public class ToolsFragment extends Fragment {
+public class CategoriasFragment extends Fragment {
 
-    private ToolsViewModel toolsViewModel;
+    private CategoriasViewModel categoriasViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        toolsViewModel =
-                ViewModelProviders.of(this).get(ToolsViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_tools, container, false);
-        final TextView textView = root.findViewById(R.id.text_tools);
-        toolsViewModel.getText().observe(this, new Observer<String>() {
+        categoriasViewModel =
+                ViewModelProviders.of(this).get(CategoriasViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_categorias, container, false);
+        /*
+        final TextView textView = root.findViewById(R.id.text_gallery);
+        categoriasViewModel.getText().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);
             }
         });
+
+         */
         return root;
     }
 }
