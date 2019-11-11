@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/greenMain">
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/logook"
+        android:id="@+id/articulo_img"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Aqui Estara el titulo"
+            android:textSize="7pt"
+            android:id="@+id/titulo_articulo_txt"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Aqui Estara el precio del artículo"
+            android:id="@+id/precio_articulo_et"
+            android:layout_marginTop="30dp"
+            android:textSize="7pt"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>

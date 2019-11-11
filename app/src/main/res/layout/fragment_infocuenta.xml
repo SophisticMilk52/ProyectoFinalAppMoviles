@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroundMain"
+    >
+
+    <!-- Hay que agregar Scroll con Padding aquí -->
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+
+                <ImageView
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:src="@drawable/user"
+                    android:layout_alignParentLeft="true"
+                    android:id="@+id/usuario_img"
+                    />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="10dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Nombre Completo"
+                        android:id="@+id/nombre_txt"
+                        android:textStyle="bold"
+                        android:textSize="20dp"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Apellido Completo"
+                        android:id="@+id/apellidos_txt"
+                        android:textStyle="bold"
+                        android:textSize="20dp"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#0A0"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Tipo Usuario"
+                        android:id="@+id/tipo_usuario_txt"
+                        android:textSize="15dp"
+                        android:textStyle="italic"/>
+
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:columnCount="5"
+                android:padding="20dp"
+                android:layout_marginTop="30dp">
+
+                <TextView
+                    android:layout_width="60pt"
+                    android:layout_height="20pt"
+                    android:gravity="center_vertical"
+                    android:text="Nombres:"
+                    android:layout_columnSpan="2"
+                    android:textSize="8pt"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="15pt"
+                    android:text="Beycker Alexis"
+                    android:layout_columnSpan="3"
+                    android:id="@+id/nombres_et"
+                    android:background="@color/backgroundInput"/>
+
+                <TextView
+                    android:layout_width="60pt"
+                    android:layout_height="20pt"
+                    android:gravity="center_vertical"
+                    android:text="Apellidos:"
+                    android:layout_columnSpan="2"
+                    android:textSize="8pt"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="15pt"
+                    android:text="Agredo Mosquera"
+                    android:layout_columnSpan="3"
+                    android:id="@+id/apellidos_et"
+                    android:background="@color/backgroundInput"/>
+
+                <TextView
+                    android:layout_width="60pt"
+                    android:layout_height="20pt"
+                    android:gravity="center_vertical"
+                    android:text="Carrera:"
+                    android:layout_columnSpan="2"
+                    android:textSize="8pt"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="15pt"
+                    android:text="Ingenieria de sistemas"
+                    android:layout_columnSpan="3"
+                    android:id="@+id/carrera_et"
+                    android:background="@color/backgroundInput"/>
+
+                <TextView
+                    android:layout_width="60pt"
+                    android:layout_height="20pt"
+                    android:gravity="center_vertical"
+                    android:text="Semestre:"
+                    android:layout_columnSpan="2"
+                    android:textSize="8pt"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="15pt"
+                    android:text="7"
+                    android:layout_columnSpan="3"
+                    android:id="@+id/semestre_et"
+                    android:background="@color/backgroundInput"/>
+
+                <TextView
+                    android:layout_width="60pt"
+                    android:layout_height="20pt"
+                    android:gravity="center_vertical"
+                    android:text="Celular:"
+                    android:layout_columnSpan="2"
+                    android:textSize="8pt"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="15pt"
+                    android:text="3155203785"
+                    android:layout_columnSpan="3"
+                    android:id="@+id/celular_et"
+                    android:background="@color/backgroundInput"/>
+
+                <TextView
+                    android:layout_width="60pt"
+                    android:layout_height="20pt"
+                    android:gravity="center_vertical"
+                    android:text="Tipo:"
+                    android:layout_columnSpan="2"
+                    android:textSize="8pt"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="15pt"
+                    android:text="Vendedor"
+                    android:layout_columnSpan="3"
+                    android:id="@+id/tipo_et"
+                    android:background="@color/backgroundInput"/>
+
+            </GridLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginTop="30dp">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Agregar"
+                    android:background="@color/greenButton"
+                    android:textColor="#fff"
+                    android:paddingRight="20dp"
+                    android:paddingLeft="20dp"
+                    android:textSize="20dp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</LinearLayout>
