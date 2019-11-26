@@ -40,7 +40,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 
 import java.io.ByteArrayOutputStream;
-import java.io.File;
+import com.facebook.FacebookSdk;
+import com.facebook.appevents.AppEventsLogger;
+
 
 public class SignInFragment extends Fragment {
 

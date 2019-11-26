@@ -8,7 +8,7 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:src="@drawable/logook"
-        android:id="@+id/articulo_img"
+        android:id="@+id/articulo_img_et"
         />
 
     <LinearLayout
@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:text="Aqui Estara el titulo"
             android:textSize="7pt"
-            android:id="@+id/titulo_articulo_txt"/>
+            android:id="@+id/titulo_articulo_et"/>
 
         <TextView
             android:layout_width="match_parent"
