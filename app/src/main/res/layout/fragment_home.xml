@@ -17,13 +17,14 @@
             android:layout_alignParentLeft="true"
             android:layout_width="match_parent"
             android:hint="Buscar"
+            android:id="@+id/homeSearchTxt"
             android:layout_height="match_parent"
             android:layout_toLeftOf="@+id/btn_search"
             android:background="@color/backgroundSearch"/>
 
 
         <ImageButton
-            android:id="@+id/btn_search"
+            android:id="@+id/homeSearchBtn"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_alignParentRight="true"

@@ -85,7 +85,6 @@ public class LoginFragment extends Fragment {
 
         loginButton = (LoginButton) view.findViewById(R.id.login_button);
         loginButton.setReadPermissions("email");
-        // If using in a fragment
         loginButton.setFragment(this);
         callbackManager = CallbackManager.Factory.create();
 
@@ -129,16 +128,24 @@ public class LoginFragment extends Fragment {
             public void onClick(View v) {
 
                 String username=emailText.getText().toString();
-                String password=emailText.getText().toString();
+                String password = passworText.getText().toString();
 
-                auth.signInWithEmailAndPassword(username,password);
-                Toast.makeText(getContext(), "Bienvenido "+auth.getCurrentUser().getDisplayName(), Toast.LENGTH_SHORT).show();
+                auth.signOut();
+                auth.signInWithEmailAndPassword(username, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            HomeFragment fragment = new HomeFragment();
+                            FragmentManager fragmentManager = getFragmentManager();
+                            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                            fragmentTransaction.replace(R.id.nav_host_fragment, fragment);
+                            fragmentTransaction.commit();
+                        } else {
+                            Toast.makeText(getContext(), "" + task.getException(), Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
 
-                HomeFragment fragment = new HomeFragment();
-                FragmentManager fragmentManager = getFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.nav_host_fragment, fragment);
-                fragmentTransaction.commit();
             }
         });
 

@@ -123,14 +123,14 @@ public class SignInFragment extends Fragment {
                     return;
                 }
 
-                auth.createUserWithEmailAndPassword(signin_email.getText().toString(),signin_password.getText().toString())
+                auth.createUserWithEmailAndPassword(signin_email.getText().toString().trim(), signin_password.getText().toString().trim())
 
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
 
                         if(task.isSuccessful()){
-
+                            Toast.makeText(getContext(), "" + signin_email.getText().toString().trim() + " : " + signin_password.getText().toString().trim(), Toast.LENGTH_LONG).show();
                             ByteArrayOutputStream stream = new ByteArrayOutputStream();
                             Drawable drawable= userImage.getDrawable();
                             Bitmap bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
