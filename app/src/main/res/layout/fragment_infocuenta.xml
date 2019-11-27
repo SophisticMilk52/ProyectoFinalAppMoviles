@@ -28,7 +28,7 @@
                     android:layout_height="90dp"
                     android:src="@drawable/user"
                     android:layout_alignParentLeft="true"
-                    android:id="@+id/usuario_img"
+                    android:id="@+id/seller_usuario_img"
                     />
 
                 <LinearLayout
@@ -37,19 +37,12 @@
                     android:orientation="vertical"
                     android:layout_marginLeft="10dp">
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Nombre Completo"
-                        android:id="@+id/nombre_txt"
-                        android:textStyle="bold"
-                        android:textSize="20dp"/>
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Apellido Completo"
-                        android:id="@+id/apellidos_txt"
+                        android:id="@+id/seller_name_header"
                         android:textStyle="bold"
                         android:textSize="20dp"/>
 
@@ -63,8 +56,8 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Tipo Usuario"
-                        android:id="@+id/tipo_usuario_txt"
+                        android:id="@+id/seller_user_header"
+                        android:text="Username"
                         android:textSize="15dp"
                         android:textStyle="italic"/>
 
@@ -96,14 +89,14 @@
                     android:layout_height="15pt"
                     android:text="Beycker Alexis"
                     android:layout_columnSpan="3"
-                    android:id="@+id/nombres_et"
+                    android:id="@+id/seller_name"
                     android:background="@color/backgroundInput"/>
 
                 <TextView
                     android:layout_width="60pt"
                     android:layout_height="20pt"
                     android:gravity="center_vertical"
-                    android:text="Apellidos:"
+                    android:text="Username:"
                     android:layout_columnSpan="2"
                     android:textSize="8pt"/>
 
@@ -112,7 +105,7 @@
                     android:layout_height="15pt"
                     android:text="Agredo Mosquera"
                     android:layout_columnSpan="3"
-                    android:id="@+id/apellidos_et"
+                    android:id="@+id/seller_username"
                     android:background="@color/backgroundInput"/>
 
                 <TextView
@@ -128,7 +121,7 @@
                     android:layout_height="15pt"
                     android:text="Ingenieria de sistemas"
                     android:layout_columnSpan="3"
-                    android:id="@+id/carrera_et"
+                    android:id="@+id/seller_study"
                     android:background="@color/backgroundInput"/>
 
                 <TextView
@@ -144,7 +137,7 @@
                     android:layout_height="15pt"
                     android:text="7"
                     android:layout_columnSpan="3"
-                    android:id="@+id/semestre_et"
+                    android:id="@+id/seller_semester"
                     android:background="@color/backgroundInput"/>
 
                 <TextView
@@ -160,14 +153,14 @@
                     android:layout_height="15pt"
                     android:text="3155203785"
                     android:layout_columnSpan="3"
-                    android:id="@+id/celular_et"
+                    android:id="@+id/seller_phone"
                     android:background="@color/backgroundInput"/>
 
                 <TextView
                     android:layout_width="60pt"
                     android:layout_height="20pt"
                     android:gravity="center_vertical"
-                    android:text="Tipo:"
+                    android:text="E-mail:"
                     android:layout_columnSpan="2"
                     android:textSize="8pt"/>
 
@@ -176,7 +169,7 @@
                     android:layout_height="15pt"
                     android:text="Vendedor"
                     android:layout_columnSpan="3"
-                    android:id="@+id/tipo_et"
+                    android:id="@+id/seller_email"
                     android:background="@color/backgroundInput"/>
 
             </GridLayout>

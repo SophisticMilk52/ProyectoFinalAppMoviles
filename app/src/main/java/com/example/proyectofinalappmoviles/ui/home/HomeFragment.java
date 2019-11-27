@@ -12,16 +12,20 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.proyectofinalappmoviles.R;
 import com.example.proyectofinalappmoviles.adapter.PublicationAdapter;
 import com.example.proyectofinalappmoviles.model.Publication;
+import com.example.proyectofinalappmoviles.ui.PublicationFragment;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 
@@ -63,7 +67,7 @@ public class HomeFragment extends Fragment {
                 for (DataSnapshot data: dataSnapshot.getChildren()
                 ) {
                     pubs.add(data.getValue(Publication.class));
-                    Toast.makeText(getContext(), ""+(pubs.get(pubs.size()-1)).getTitle(), Toast.LENGTH_SHORT).show();
+
                 }
                 adapter.setPubs(pubs);
             }
@@ -77,9 +81,20 @@ public class HomeFragment extends Fragment {
         publications.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getContext(), ""+pubs.get(position).getTitle(), Toast.LENGTH_SHORT).show();
+                Publication publication = pubs.get(position);
+                PublicationFragment fragment = new PublicationFragment();
+                FragmentManager fragmentManager = getFragmentManager();
+                Bundle bundle = new Bundle();
+                Gson gson = new Gson();
+                String jsonPub = gson.toJson(publication);
+                bundle.putString("publication", jsonPub);
+                fragment.setArguments(bundle);
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.nav_host_fragment, fragment);
+                fragmentTransaction.commit();
             }
         });
 
 }
+
 }
