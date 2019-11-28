@@ -34,6 +34,15 @@ import android.view.Menu;
 public class MainActivity extends AppCompatActivity {
 
     FirebaseAuth auth;
+    private Intent serviceIntent;
+
+    public Intent getServiceIntent() {
+        return serviceIntent;
+    }
+
+    public void setServiceIntent(Intent serviceIntent) {
+        this.serviceIntent = serviceIntent;
+    }
 
     private AppBarConfiguration mAppBarConfiguration;
 
@@ -60,8 +69,8 @@ public class MainActivity extends AppCompatActivity {
 
         auth = FirebaseAuth.getInstance();
         if (auth.getCurrentUser() != null) {
-            Intent intent = new Intent(this, NotificationService.class);
-            startService(intent);
+            serviceIntent = new Intent(this, NotificationService.class);
+            startService(serviceIntent);
         }
 
     }

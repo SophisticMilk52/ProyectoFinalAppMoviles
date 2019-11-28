@@ -28,6 +28,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.proyectofinalappmoviles.MainActivity;
 import com.example.proyectofinalappmoviles.R;
 import com.example.proyectofinalappmoviles.model.User;
 import com.example.proyectofinalappmoviles.services.NotificationService;
@@ -160,6 +161,9 @@ public class SignInFragment extends Fragment {
                                     signin_semester.getText().toString());
 
                             db.getReference().child("users").child(auth.getCurrentUser().getUid()).setValue(user);
+
+                            ((MainActivity) getActivity()).setServiceIntent(new Intent(getActivity(), NotificationService.class));
+                            getActivity().startService(((MainActivity) getActivity()).getServiceIntent());
 
 
                             HomeFragment fragment = new HomeFragment();

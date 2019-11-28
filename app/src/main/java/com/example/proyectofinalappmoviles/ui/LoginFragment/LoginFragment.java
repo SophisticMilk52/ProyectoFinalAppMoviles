@@ -20,7 +20,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.proyectofinalappmoviles.MainActivity;
 import com.example.proyectofinalappmoviles.R;
+import com.example.proyectofinalappmoviles.services.NotificationService;
 import com.example.proyectofinalappmoviles.ui.SignInFragment;
 import com.example.proyectofinalappmoviles.ui.home.HomeFragment;
 import com.facebook.CallbackManager;
@@ -135,6 +137,9 @@ public class LoginFragment extends Fragment {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
+                            ((MainActivity) getActivity()).setServiceIntent(new Intent(getActivity(), NotificationService.class));
+                            getActivity().startService(((MainActivity) getActivity()).getServiceIntent());
+
                             HomeFragment fragment = new HomeFragment();
                             FragmentManager fragmentManager = getFragmentManager();
                             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();

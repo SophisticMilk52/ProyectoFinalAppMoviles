@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -70,11 +71,18 @@ public class PublicationFragment extends Fragment {
         contactBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SendMesssageFragment fragment = new SendMesssageFragment(auth.getCurrentUser().getUid(), uid);
-                FragmentManager fragmentManager = getFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.nav_host_fragment, fragment);
-                fragmentTransaction.commit();
+
+                if (auth.getCurrentUser() != null) {
+                    SendMesssageFragment fragment = new SendMesssageFragment(auth.getCurrentUser().getUid(), uid);
+                    FragmentManager fragmentManager = getFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    fragmentTransaction.replace(R.id.nav_host_fragment, fragment);
+                    fragmentTransaction.commit();
+                } else {
+                    Toast.makeText(getContext(), "No se pueden enviar mensajes sin registrarse", Toast.LENGTH_LONG).show();
+                }
+
+
             }
         });
 
