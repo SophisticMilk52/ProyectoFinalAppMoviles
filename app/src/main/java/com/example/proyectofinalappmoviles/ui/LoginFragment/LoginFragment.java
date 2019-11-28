@@ -90,40 +90,39 @@ public class LoginFragment extends Fragment {
         loginButton.setFragment(this);
         callbackManager = CallbackManager.Factory.create();
 
-//        loginButton.registerCallback(callbackManager,
-//                new FacebookCallback<LoginResult>() {
-//                    @Override
-//                    public void onSuccess(LoginResult loginResult) {
-//                        AuthCredential credential = FacebookAuthProvider.getCredential(loginResult.getAccessToken().getToken());
-//                        auth.signInWithCredential(credential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-//                            @Override
-//                            public void onComplete(@NonNull Task<AuthResult> task) {
-//                                if (task.isSuccessful()) {
-//                                    Log.d("facebook", "signInWithCredential:success");
-//                                    FirebaseUser user = auth.getCurrentUser();
-//
-//
-//
-//                                } else {
-//                                    Log.w("facebook", "signInWithCredential:failure", task.getException());
-//                                    Toast.makeText(getContext(), "Authentication failed.",
-//                                            Toast.LENGTH_SHORT).show();
-//                                }
-//                            }
-//                        });
-//                    }
-//
-//                    @Override
-//                    public void onCancel() {
-//                        Toast.makeText(getContext(), "FacebookCancel", Toast.LENGTH_SHORT).show();
-//                    }
-//
-//                    @Override
-//                    public void onError(FacebookException exception) {
-//                        Toast.makeText(getContext(), "FacebookException", Toast.LENGTH_SHORT).show();
-//                        Log.e("facebook",exception.getMessage());
-//                    }
-//                });
+        loginButton.registerCallback(callbackManager,
+                new FacebookCallback<LoginResult>() {
+                    @Override
+                    public void onSuccess(LoginResult loginResult) {
+                        AuthCredential credential = FacebookAuthProvider.getCredential(loginResult.getAccessToken().getToken());
+                        auth.signInWithCredential(credential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
+                                    Log.d("facebook", "signInWithCredential:success");
+                                    FirebaseUser user = auth.getCurrentUser();
+
+
+                                } else {
+                                    Log.w("facebook", "signInWithCredential:failure", task.getException());
+                                    Toast.makeText(getContext(), "Authentication failed.",
+                                            Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void onCancel() {
+                        Toast.makeText(getContext(), "FacebookCancel", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onError(FacebookException exception) {
+                        Toast.makeText(getContext(), "FacebookException", Toast.LENGTH_SHORT).show();
+                        Log.e("facebook", exception.getMessage());
+                    }
+                });
 
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
