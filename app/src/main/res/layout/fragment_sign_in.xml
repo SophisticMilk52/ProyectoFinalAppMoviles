@@ -57,10 +57,25 @@
             android:layout_marginBottom="20dp"
             android:hint="@string/hint_mobile" />
 
+        <EditText
+            android:id="@+id/signin_study"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:hint="Carrera Universitaria" />
+
+        <EditText
+            android:id="@+id/signin_semester"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:hint="Semestre" />
+
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/label_age"/>
+            android:text="Ingrese su contraseña" />
 
 
         <EditText

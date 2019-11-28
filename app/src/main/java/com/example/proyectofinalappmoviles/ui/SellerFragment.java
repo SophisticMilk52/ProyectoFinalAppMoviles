@@ -77,8 +77,8 @@ public class SellerFragment extends Fragment {
                 headerUser.setText(seller.getUsername());
                 name.setText(seller.getName());
                 user.setText(seller.getUsername());
-                //Anadir carrera
-                //Anadir semestre
+                study.setText(seller.getStudy());
+                semester.setText(seller.getSemester());
                 phone.setText(seller.getPhone());
                 email.setText(seller.getEmail());
 

@@ -112,33 +112,38 @@ public class VenderFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                String uid = UUID.randomUUID().toString();
-                Publication pub=new Publication(
-                        uid,
-                        titleText.getText().toString(),
-                        descriptionText.getText().toString(),
-                        Integer.parseInt(priceText.getText().toString()),
-                        ((Category)categoryList.getSelectedItem()).getName(),
-                        auth.getCurrentUser().getUid()
-                );
+                if (auth.getCurrentUser() != null) {
+                    String uid = UUID.randomUUID().toString();
+                    Publication pub = new Publication(
+                            uid,
+                            titleText.getText().toString(),
+                            descriptionText.getText().toString(),
+                            Integer.parseInt(priceText.getText().toString()),
+                            ((Category) categoryList.getSelectedItem()).getName(),
+                            auth.getCurrentUser().getUid()
+                    );
 
-                db.getReference().child("publications").child(pub.getUid()).setValue(pub);
+                    db.getReference().child("publications").child(pub.getUid()).setValue(pub);
 
-                ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                Drawable drawable= sellImage.getDrawable();
-                Bitmap bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
-                Canvas canvas = new Canvas(bitmap);
-                drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
-                drawable.draw(canvas);
-                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+                    ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                    Drawable drawable = sellImage.getDrawable();
+                    Bitmap bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
+                    Canvas canvas = new Canvas(bitmap);
+                    drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
+                    drawable.draw(canvas);
+                    bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
 
-                storage.getReference().child("publicationPhotos").child(pub.getUid()).putBytes(stream.toByteArray());
+                    storage.getReference().child("publicationPhotos").child(pub.getUid()).putBytes(stream.toByteArray());
 
-                HomeFragment fragment = new HomeFragment();
-                FragmentManager fragmentManager = getFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.nav_host_fragment, fragment);
-                fragmentTransaction.commit();
+                    HomeFragment fragment = new HomeFragment();
+                    FragmentManager fragmentManager = getFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    fragmentTransaction.replace(R.id.nav_host_fragment, fragment);
+                    fragmentTransaction.commit();
+                } else {
+                    Toast.makeText(getContext(), "No se puede publicar sin acceder a una cuenta", Toast.LENGTH_LONG).show();
+                }
+
             }
         });
 

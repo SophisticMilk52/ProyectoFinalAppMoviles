@@ -1,7 +1,9 @@
 package com.example.proyectofinalappmoviles;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.proyectofinalappmoviles.services.NotificationService;
 import com.example.proyectofinalappmoviles.ui.MessagesFragment;
 import com.example.proyectofinalappmoviles.ui.SendMesssageFragment;
 import com.example.proyectofinalappmoviles.ui.home.HomeFragment;
@@ -20,6 +22,7 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -29,6 +32,17 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
 
 public class MainActivity extends AppCompatActivity {
+
+    FirebaseAuth auth;
+    private Intent serviceIntent;
+
+    public Intent getServiceIntent() {
+        return serviceIntent;
+    }
+
+    public void setServiceIntent(Intent serviceIntent) {
+        this.serviceIntent = serviceIntent;
+    }
 
     private AppBarConfiguration mAppBarConfiguration;
 
@@ -52,7 +66,15 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+        auth = FirebaseAuth.getInstance();
+        if (auth.getCurrentUser() != null) {
+            serviceIntent = new Intent(this, NotificationService.class);
+            startService(serviceIntent);
+        }
+
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -67,4 +89,6 @@ public class MainActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
+
+
 }

@@ -15,10 +15,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.proyectofinalappmoviles.R;
 import com.example.proyectofinalappmoviles.adapter.MessageAdapter;
 import com.example.proyectofinalappmoviles.model.Message;
+import com.example.proyectofinalappmoviles.ui.home.HomeFragment;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -42,6 +44,7 @@ public class MessagesFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
     }
 
     @Override
@@ -52,45 +55,60 @@ public class MessagesFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+
         auth = FirebaseAuth.getInstance();
-        db = FirebaseDatabase.getInstance();
-        messages = view.findViewById(R.id.messagesLv);
-        MessageAdapter adapter = new MessageAdapter();
-        messages.setAdapter(adapter);
+        if (auth.getCurrentUser() == null) {
+            Toast.makeText(getContext(), "No hay mensajes pues no estas registrado", Toast.LENGTH_SHORT).show();
+            HomeFragment fragment = new HomeFragment();
+            FragmentManager fragmentManager = getFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.nav_host_fragment, fragment);
+            fragmentTransaction.commit();
+        } else {
 
-        String uidUser = auth.getCurrentUser().getUid();
+            super.onViewCreated(view, savedInstanceState);
+            auth = FirebaseAuth.getInstance();
+            db = FirebaseDatabase.getInstance();
+            messages = view.findViewById(R.id.messagesLv);
+            MessageAdapter adapter = new MessageAdapter();
+            messages.setAdapter(adapter);
 
-        db.getReference().child("inbox").child(uidUser).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                ArrayList<Message> arrayList = new ArrayList<>();
-                for (DataSnapshot item : dataSnapshot.getChildren()
-                ) {
-                    arrayList.add(item.getValue(Message.class));
+            String uidUser = auth.getCurrentUser().getUid();
+
+            db.getReference().child("inbox").child(uidUser).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    ArrayList<Message> arrayList = new ArrayList<>();
+                    for (DataSnapshot item : dataSnapshot.getChildren()
+                    ) {
+                        arrayList.add(item.getValue(Message.class));
+                    }
+                    adapter.setMessages(arrayList);
                 }
-                adapter.setMessages(arrayList);
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
 
-            }
-        });
+                }
+            });
 
-        messages.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Message message = adapter.getMessages().get(position);
+            messages.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    Message message = adapter.getMessages().get(position);
 
-                SendMesssageFragment fragment = new SendMesssageFragment(auth.getCurrentUser().getUid(), message.getSenderId());
-                FragmentManager fragmentManager = getFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.nav_host_fragment, fragment);
-                fragmentTransaction.commit();
+                    SendMesssageFragment fragment = new SendMesssageFragment(auth.getCurrentUser().getUid(), message.getSenderId());
+                    FragmentManager fragmentManager = getFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    fragmentTransaction.replace(R.id.nav_host_fragment, fragment);
+                    fragmentTransaction.commit();
 
-            }
-        });
+                }
+            });
+
+        }
+
+
 
 
     }

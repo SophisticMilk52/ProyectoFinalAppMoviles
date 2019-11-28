@@ -28,8 +28,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.proyectofinalappmoviles.MainActivity;
 import com.example.proyectofinalappmoviles.R;
 import com.example.proyectofinalappmoviles.model.User;
+import com.example.proyectofinalappmoviles.services.NotificationService;
 import com.example.proyectofinalappmoviles.ui.LoginFragment.LoginFragment;
 import com.example.proyectofinalappmoviles.ui.home.HomeFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -55,6 +57,8 @@ public class SignInFragment extends Fragment {
     private Button login_signin;
     private TextView alreadyUserTV;
     private ImageView userImage;
+    private EditText signin_study;
+    private EditText signin_semester;
 
     private static final int CAMERA_CALLBACK_ID = 11;
 
@@ -92,6 +96,8 @@ public class SignInFragment extends Fragment {
         signin_password = view.findViewById(R.id.signin_password);
         signin_repassword = view.findViewById(R.id.signin_repassword);
         login_signin = view.findViewById(R.id.login_signin);
+        signin_semester = view.findViewById(R.id.signin_semester);
+        signin_study = view.findViewById(R.id.signin_study);
         alreadyUserTV = view.findViewById(R.id.alreadyUserTV);
         userImage=view.findViewById(R.id.signin_image);
 
@@ -150,9 +156,15 @@ public class SignInFragment extends Fragment {
                                     signin_email.getText().toString(),
                                     signin_username.getText().toString(),
                                     signin_mobile.getText().toString(),
-                                    signin_password.getText().toString());
+                                    signin_password.getText().toString(),
+                                    signin_study.getText().toString(),
+                                    signin_semester.getText().toString());
 
                             db.getReference().child("users").child(auth.getCurrentUser().getUid()).setValue(user);
+
+                            ((MainActivity) getActivity()).setServiceIntent(new Intent(getActivity(), NotificationService.class));
+                            getActivity().startService(((MainActivity) getActivity()).getServiceIntent());
+
 
                             HomeFragment fragment = new HomeFragment();
                             FragmentManager fragmentManager = getFragmentManager();
