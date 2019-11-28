@@ -8,15 +8,20 @@ public class User {
     private String username;
     private String phone;
     private String password;
+    private String study;
+    private String semester;
 
-    public User(String uid, String name, String email, String username, String phone, String password) {
+    public User(String uid, String name, String email, String username, String phone, String password, String study, String semester) {
         this.uid = uid;
         this.name = name;
         this.email = email;
         this.username = username;
         this.phone = phone;
         this.password = password;
+        this.study = study;
+        this.semester = semester;
     }
+
 
     public User() {
     }
@@ -69,4 +74,19 @@ public class User {
         this.password = password;
     }
 
+    public String getStudy() {
+        return study;
+    }
+
+    public void setStudy(String study) {
+        this.study = study;
+    }
+
+    public String getSemester() {
+        return semester;
+    }
+
+    public void setSemester(String semester) {
+        this.semester = semester;
+    }
 }

@@ -111,6 +111,9 @@ public class SendMesssageFragment extends Fragment {
                 db.getReference().child("inbox").child(senderId).child(uid).setValue(sent);
                 db.getReference().child("inbox").child(recieverId).child(uid2).setValue(recieved);
 
+                db.getReference().child("notifications").child(senderId).child(uid).setValue(sent);
+                db.getReference().child("notifications").child(recieverId).child(uid2).setValue(recieved);
+
                 MessagesFragment fragment = new MessagesFragment();
                 FragmentManager fragmentManager = getFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
