@@ -26,9 +26,9 @@
             android:icon="@drawable/help"
             android:title="Preguntas Frecuentes" />
         <item
-            android:id="@+id/nav_configuracion"
-            android:title="Configuracion"
-            android:icon="@drawable/ic_build_black_24dp"/>
+            android:id="@+id/nav_chat"
+            android:icon="@drawable/ic_menu_send"
+            android:title="Chats" />
         <item
             android:id="@+id/nav_calificanos"
             android:title="Calificanos"

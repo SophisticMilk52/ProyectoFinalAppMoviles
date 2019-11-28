@@ -52,8 +52,8 @@
     <string name="sellPrice">Precio de venta</string>
     <string name="sellCategory">Seleccione una categoría</string>
     <string name="publish">Publicar articulo</string>
-    <string name="facebook_app_id">2752740844777866</string> <string name="fb_login_protocol_scheme">fb2752740844777866</string>
-
+    <string name="facebook_app_id">2752740844777866</string>
+    <string name="fb_login_protocol_scheme">fb2752740844777866</string>
 
 
 </resources>

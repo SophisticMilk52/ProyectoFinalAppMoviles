@@ -19,6 +19,7 @@ import com.example.proyectofinalappmoviles.MainActivity;
 import com.example.proyectofinalappmoviles.R;
 import com.example.proyectofinalappmoviles.model.Publication;
 import com.example.proyectofinalappmoviles.model.User;
+import com.example.proyectofinalappmoviles.ui.home.HomeFragment;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -40,6 +41,7 @@ public class PublicationFragment extends Fragment {
     private TextView seller;
     private Button contactBtn;
     private ImageView image;
+    private String uid;
 
     @Nullable
     @Override
@@ -68,7 +70,11 @@ public class PublicationFragment extends Fragment {
         contactBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO
+                SendMesssageFragment fragment = new SendMesssageFragment(auth.getCurrentUser().getUid(), uid);
+                FragmentManager fragmentManager = getFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.nav_host_fragment, fragment);
+                fragmentTransaction.commit();
             }
         });
 
@@ -81,6 +87,7 @@ public class PublicationFragment extends Fragment {
         String extra = getArguments().getString("publication");
         Gson gson = new Gson();
         Publication pub = gson.fromJson(extra, Publication.class);
+        uid = pub.getSellerId();
 
         title.setText(pub.getTitle());
         category.setText(pub.getCategory());
@@ -107,7 +114,6 @@ public class PublicationFragment extends Fragment {
         seller.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String uid = pub.getSellerId();
 
                 SellerFragment fragment = new SellerFragment();
                 FragmentManager fragmentManager = getFragmentManager();

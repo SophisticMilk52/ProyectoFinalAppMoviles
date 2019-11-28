@@ -33,6 +33,7 @@ public class SellerFragment extends Fragment {
     private TextView semester;
     private TextView phone;
     private TextView email;
+    private String sellerId;
 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_infocuenta, container, false);
@@ -66,6 +67,7 @@ public class SellerFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 User seller = dataSnapshot.getValue(User.class);
+                sellerId = seller.getUid();
 
                 storage.getReference().child("userFotos").child(seller.getUid()).getDownloadUrl().addOnSuccessListener(uri -> {
                     Glide.with(image).load(uri.toString()).into(image);

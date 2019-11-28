@@ -40,6 +40,11 @@
         android:name="com.example.proyectofinalappmoviles.ui.configuracion.ConfiguracionFragment"
         android:label="@string/menu_configuracion"
         tools:layout="@layout/fragment_configuracion" />
+    <fragment
+        android:id="@+id/nav_chat"
+        android:name="com.example.proyectofinalappmoviles.ui.MessagesFragment"
+        android:label="Chats"
+        tools:layout="@layout/fragment_messages" />
 
     <fragment
         android:id="@+id/nav_calificanos"
