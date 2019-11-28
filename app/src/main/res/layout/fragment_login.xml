@@ -7,7 +7,7 @@
     android:padding="40dp">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imageViewLogo"
         android:layout_width="match_parent"
         android:layout_height="234dp"
         android:contentDescription="@string/nav_header_desc"

@@ -2,6 +2,10 @@ package com.example.proyectofinalappmoviles.ui.LoginFragment;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -17,11 +21,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.proyectofinalappmoviles.MainActivity;
 import com.example.proyectofinalappmoviles.R;
+import com.example.proyectofinalappmoviles.model.User;
 import com.example.proyectofinalappmoviles.services.NotificationService;
 import com.example.proyectofinalappmoviles.ui.SignInFragment;
 import com.example.proyectofinalappmoviles.ui.home.HomeFragment;
@@ -38,6 +45,14 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
 
 
 public class LoginFragment extends Fragment {
@@ -47,9 +62,12 @@ public class LoginFragment extends Fragment {
     private EditText emailText;
     private EditText passworText;
     private LoginButton loginButton;
+    FirebaseDatabase db;
 
     FirebaseAuth auth;
     CallbackManager callbackManager;
+    FirebaseStorage storage;
+    private ImageView imagenLogo;
 
 
 
@@ -58,13 +76,12 @@ public class LoginFragment extends Fragment {
         // Required empty public constructor
     }
 
-
-
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         auth=FirebaseAuth.getInstance();
+        db = FirebaseDatabase.getInstance();
+        storage = FirebaseStorage.getInstance();
 
 
 
@@ -84,6 +101,7 @@ public class LoginFragment extends Fragment {
         signInBtn=view.findViewById(R.id.registro_btn);
         emailText=view.findViewById(R.id.username_et);
         passworText=view.findViewById(R.id.password_et);
+        imagenLogo = view.findViewById(R.id.imageViewLogo);
 
         loginButton = (LoginButton) view.findViewById(R.id.login_button);
         loginButton.setReadPermissions("email");
@@ -92,15 +110,51 @@ public class LoginFragment extends Fragment {
 
         loginButton.registerCallback(callbackManager,
                 new FacebookCallback<LoginResult>() {
+
+
                     @Override
                     public void onSuccess(LoginResult loginResult) {
+                        Log.e("permissions", loginResult.getAccessToken().getPermissions().toString());
                         AuthCredential credential = FacebookAuthProvider.getCredential(loginResult.getAccessToken().getToken());
                         auth.signInWithCredential(credential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
                                     Log.d("facebook", "signInWithCredential:success");
                                     FirebaseUser user = auth.getCurrentUser();
+
+                                    String username = user.getDisplayName();
+                                    String email = user.getEmail();
+                                    String uid = user.getUid();
+                                    String semester = "Usuario de Facebook";
+                                    String study = "Usuario de Facebook";
+                                    String phone = user.getPhoneNumber();
+                                    String password = "null";
+                                    String name = username;
+                                    String url = user.getPhotoUrl().toString();
+
+                                    User userToDB = new User(uid, name, email, username, phone, password, study, semester);
+                                    db.getReference().child("users").child(uid).setValue(userToDB);
+
+
+                                    Log.e("urlImagenFacebook", url);
+                                    Drawable drawable = imagenLogo.getDrawable();
+                                    Bitmap bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
+                                    ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                                    Canvas canvas = new Canvas(bitmap);
+                                    drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
+                                    drawable.draw(canvas);
+                                    bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+                                    storage.getReference().child("userFotos").child(uid).putBytes(stream.toByteArray());
+                                    
+
+                                    HomeFragment fragment = new HomeFragment();
+                                    FragmentManager fragmentManager = getFragmentManager();
+                                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                                    fragmentTransaction.replace(R.id.nav_host_fragment, fragment);
+                                    fragmentTransaction.commit();
+
 
 
                                 } else {
@@ -119,6 +173,7 @@ public class LoginFragment extends Fragment {
 
                     @Override
                     public void onError(FacebookException exception) {
+                        exception.printStackTrace();
                         Toast.makeText(getContext(), "FacebookException", Toast.LENGTH_SHORT).show();
                         Log.e("facebook", exception.getMessage());
                     }

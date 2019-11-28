@@ -1,6 +1,9 @@
 package com.example.proyectofinalappmoviles;
 
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.os.Bundle;
 
 import com.example.proyectofinalappmoviles.services.NotificationService;
@@ -12,6 +15,8 @@ import com.facebook.appevents.AppEventsLogger;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
+import android.util.Base64;
+import android.util.Log;
 import android.view.View;
 
 import androidx.fragment.app.FragmentManager;
@@ -30,6 +35,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
+
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -72,6 +80,22 @@ public class MainActivity extends AppCompatActivity {
             serviceIntent = new Intent(this, NotificationService.class);
             startService(serviceIntent);
         }
+
+        try {
+            PackageInfo info = getPackageManager().getPackageInfo(
+                    "com.example.proyectofinalappmoviles",
+                    PackageManager.GET_SIGNATURES);
+            for (Signature signature : info.signatures) {
+                MessageDigest md = MessageDigest.getInstance("SHA");
+                md.update(signature.toByteArray());
+                Log.d("KeyHash:", Base64.encodeToString(md.digest(), Base64.DEFAULT));
+            }
+        } catch (PackageManager.NameNotFoundException e) {
+        } catch (NoSuchAlgorithmException e) {
+        }
+
+
+
 
     }
 
