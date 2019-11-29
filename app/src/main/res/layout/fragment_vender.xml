@@ -2,7 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/backgroundMain">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -25,45 +26,65 @@
                 android:src="@drawable/ic_launcher_foreground" />
 
             <EditText
+                android:background="#fff"
+                android:layout_height="35dp"
                 android:id="@+id/sell_title"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
                 android:hint="@string/sellTitle" />
 
             <EditText
+                android:background="#fff"
+                android:layout_height="35dp"
                 android:id="@+id/sell_description"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
                 android:hint="@string/sellDescription" />
 
 
             <EditText
+                android:background="#fff"
+                android:layout_height="35dp"
                 android:id="@+id/sellPrice"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
                 android:hint="@string/sellPrice" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/sellCategory"/>
+                android:text="@string/sellCategory"
+                android:layout_marginBottom="10dp"/>
 
             <Spinner
+                android:background="#fff"
+                android:layout_height="35dp"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
                 android:id="@+id/sellCategory"
                 android:spinnerMode="dropdown"
                 >
             </Spinner>
 
-            <Button
-                android:id="@+id/sellBtn"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/publish" />
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_marginTop="40dp">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/publish"
+                    android:id="@+id/sellBtn"
+                    android:background="@color/greenButton"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:textSize="20dp"
+                    android:textColor="#fff"/>
+
+            </LinearLayout>
+
 
         </LinearLayout>
     </ScrollView>

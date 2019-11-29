@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,83 +9,82 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="40dp">
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="match_parent"
-            android:layout_height="234dp"
-            android:contentDescription="@string/nav_header_desc"
-            android:paddingTop="@dimen/nav_header_vertical_spacing"
-            android:src="@drawable/logook" />
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="#E5E6F0"
-            android:id="@+id/username_et"
-            android:hint="Username"/>
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="#E5E6F0"
-            android:id="@+id/password_et"
-            android:hint="Password"
-            android:layout_marginTop="15dp"/>
-
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical"
-            android:paddingLeft="60dp"
-            android:paddingRight="60dp"
-            android:layout_marginTop="40dp">
+            android:padding="40dp">
 
-            <Button
+            <ImageView
+                android:id="@+id/imageViewLogo"
+                android:layout_width="match_parent"
+                android:layout_height="234dp"
+                android:contentDescription="@string/nav_header_desc"
+                android:paddingTop="@dimen/nav_header_vertical_spacing"
+                android:src="@drawable/logook" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="#E5E6F0"
+                android:id="@+id/username_et"
+                android:hint="Username"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="#E5E6F0"
+                android:id="@+id/password_et"
+                android:hint="Password"
+                android:layout_marginTop="15dp"/>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Login"
-                android:id="@+id/loginBtn"
-                android:background="#56616F"
-                android:textColor="#fff"/>
-            <com.facebook.login.widget.LoginButton
-                android:id="@+id/login_button"
-                android:layout_width="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="60dp"
+                android:paddingRight="60dp"
+                android:layout_marginTop="40dp">
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Login"
+                    android:id="@+id/loginBtn"
+                    android:background="#56616F"
+                    android:textColor="#fff"/>
+                <com.facebook.login.widget.LoginButton
+                    android:id="@+id/login_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="30dp" />
+
+            </LinearLayout>
+
+            <GridLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="30dp"
-                android:layout_marginBottom="30dp" />
+                android:columnCount="2"
+                android:rowCount="1"
+                android:layout_marginTop="20dp"
+                >
+
+                <TextView
+                    android:text="No tienes cuenta?"
+                    android:layout_gravity="center"
+                    android:padding="@dimen/activity_horizontal_margin"/>
+                <Button
+                    android:id="@+id/registro_btn"
+                    android:text="Registrate"
+                    android:background="#88C43E"
+                    android:layout_gravity="center"
+                    android:textColor="#2E71B6"
+                    />
+            </GridLayout>
 
         </LinearLayout>
-
-        <GridLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:columnCount="2"
-            android:rowCount="1"
-            android:layout_marginTop="20dp"
-            >
-
-            <TextView
-                android:text="No tienes cuenta?"
-                android:layout_gravity="center"
-                android:padding="@dimen/activity_horizontal_margin"/>
-            <Button
-                android:id="@+id/registro_btn"
-                android:text="Registrate"
-                android:background="#88C43E"
-                android:layout_gravity="center"
-                android:textColor="#2E71B6"
-                />
-        </GridLayout>
-
-
-    </LinearLayout>
 
     </ScrollView>
 
