@@ -147,7 +147,7 @@ public class LoginFragment extends Fragment {
                                     drawable.draw(canvas);
                                     bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
                                     storage.getReference().child("userFotos").child(uid).putBytes(stream.toByteArray());
-                                    
+
 
                                     HomeFragment fragment = new HomeFragment();
                                     FragmentManager fragmentManager = getFragmentManager();

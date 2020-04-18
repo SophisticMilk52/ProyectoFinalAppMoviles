@@ -117,6 +117,27 @@ public class SignInFragment extends Fragment {
                     Toast.makeText(v.getContext(), "El campo de email esta vacio", Toast.LENGTH_LONG).show();
                     return;
                 }
+                if (signin_name.getText().toString().trim().isEmpty()) {
+                    Toast.makeText(v.getContext(), "El campo de nombre esta vacio", Toast.LENGTH_LONG).show();
+                    return;
+                }
+                if (signin_username.getText().toString().trim().isEmpty()) {
+                    Toast.makeText(v.getContext(), "El campo de nombre de usuario esta vacio", Toast.LENGTH_LONG).show();
+                    return;
+                }
+
+                if (signin_semester.getText().toString().trim().isEmpty()) {
+                    Toast.makeText(v.getContext(), "El campo de semestre esta vacio", Toast.LENGTH_LONG).show();
+                    return;
+                }
+                if (signin_study.getText().toString().trim().isEmpty()) {
+                    Toast.makeText(v.getContext(), "El campo de carrera universitaria esta vacio", Toast.LENGTH_LONG).show();
+                    return;
+                }
+                if (signin_mobile.getText().toString().trim().isEmpty()) {
+                    Toast.makeText(v.getContext(), "El campo de telefono esta vacio", Toast.LENGTH_LONG).show();
+                    return;
+                }
 
                 if (!signin_password.getText().toString()
                         .equals(signin_repassword.getText().toString())) {

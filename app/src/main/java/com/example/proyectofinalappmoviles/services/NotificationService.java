@@ -57,8 +57,11 @@ public class NotificationService extends Service {
 
                             }
 
-                            db.getReference().child("notifications")
-                                    .child(auth.getCurrentUser().getUid()).child(m.getUid()).setValue(null);
+                            if (auth.getCurrentUser() != null) {
+                                db.getReference().child("notifications")
+                                        .child(auth.getCurrentUser().getUid()).child(m.getUid()).setValue(null);
+                            }
+
                         }
                     }
 
